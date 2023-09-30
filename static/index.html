@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>MC Command Agent</title>
+  <style>
+    #commands {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5em;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>MC Command Agent</h1>
+  <div id="commands">
+  </div>
+  <script>
+    fetch('/list').then((res) => {
+      res.json().then((commands) => {
+        const el = document.getElementById('commands');
+        commands.forEach((command) => {
+          const button = document.createElement('button');
+          button.innerText = command;
+          button.onclick = () => {
+            if (confirm(`Run command: ${command}`)) {
+              fetch('/run', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({command})
+              }).then((res) => {
+                res.text().then((result) => {
+                  alert(`${res.ok ? 'OK' : 'Error'}: ${result}`);
+                });
+              });
+            }
+          };
+          el.appendChild(button);
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
