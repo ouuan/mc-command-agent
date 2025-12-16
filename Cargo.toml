@@ -6,12 +6,12 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-actix-files = "0.6.2"
-actix-web = "4.4.0"
-actix-web-httpauth = "0.8.1"
-anyhow = { version = "1.0.75", features = ["backtrace"] }
-env_logger = "0.10.0"
+actix-files = "0.6.9"
+actix-web = "4.12.1"
+actix-web-httpauth = "0.8.2"
+anyhow = { version = "1.0.100", features = ["backtrace"] }
+env_logger = "0.11.8"
 rcon = { version = "0.6.0", features = ["rt-tokio"] }
-serde = { version = "1.0.188", features = ["derive"] }
-serde_yaml = "0.9.25"
-tokio = { version = "1.32.0", features = ["macros", "net"] }
+serde = { version = "1.0.228", features = ["derive"] }
+serde_yaml = "0.9.34"
+tokio = { version = "1.48.0", features = ["macros", "net"] }
